@@ -28,11 +28,10 @@ public class MainLayoutController {
         choiceDisk.getSelectionModel().selectFirst();
         choiceDisk.setOnAction(event -> lblSelectedDisk.setText("Selected disk: " + choiceDisk.getValue()));
 
-
         /* Center StackPane children */
         try {
-            Parent inputPane = App.loadFXML("primary");
-            Parent outputPane = App.loadFXML("secondary");
+            Parent inputPane = App.loadFXML("inputLayout");
+            Parent outputPane = App.loadFXML("outputLayout");
             centerTabPane.getTabs().add(new Tab("Input", inputPane));
             centerTabPane.getTabs().add(new Tab("Output", outputPane));
         } catch (IOException e) {
