@@ -5,22 +5,19 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 
 import java.io.IOException;
 
 public class MainLayoutController {
-    private Parent primaryPane;
-    private Parent secondaryPane;
 
     @FXML
     public ChoiceBox<String> choiceDisk;
     @FXML
     public Label lblSelectedDisk;
     @FXML
-    public StackPane centerStackPane;
-    @FXML
-    public ChoiceBox<Integer> choiceLayout;
+    public TabPane centerTabPane;
 
     @FXML
     void initialize() {
@@ -31,24 +28,13 @@ public class MainLayoutController {
         choiceDisk.getSelectionModel().selectFirst();
         choiceDisk.setOnAction(event -> lblSelectedDisk.setText("Selected disk: " + choiceDisk.getValue()));
 
-        choiceLayout.setItems(FXCollections.observableArrayList(1, 2));
-        choiceLayout.getSelectionModel().selectFirst();
-        choiceLayout.setOnAction(event -> {
-            if (choiceLayout.getValue().equals(1)) {
-                primaryPane.setVisible(true);
-                secondaryPane.setVisible(false);
-            } else {
-                secondaryPane.setVisible(true);
-                primaryPane.setVisible(false);
-            }
-        });
 
         /* Center StackPane children */
         try {
-            primaryPane = App.loadFXML("primary");
-            secondaryPane = App.loadFXML("secondary");
-            centerStackPane.getChildren().addAll(primaryPane, secondaryPane);
-            secondaryPane.setVisible(false);
+            Parent inputPane = App.loadFXML("primary");
+            Parent outputPane = App.loadFXML("secondary");
+            centerTabPane.getTabs().add(new Tab("Input", inputPane));
+            centerTabPane.getTabs().add(new Tab("Output", outputPane));
         } catch (IOException e) {
             e.printStackTrace();
         }
