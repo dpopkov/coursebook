@@ -12,6 +12,7 @@
     <module>coursebookgui</module>
     <module>coursebookmodel</module>
     <module>coursebookdb</module>
+    <module>coursebookservice</module>
   </modules>
 
   <name>coursebook</name>
