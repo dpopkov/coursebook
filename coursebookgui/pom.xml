@@ -9,8 +9,6 @@
     <artifactId>coursebookgui</artifactId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>-->
         <javafx.version>13</javafx.version>
     </properties>
     <dependencies>
@@ -23,6 +21,12 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.daydevjv.coursebook</groupId>
+            <artifactId>coursebookmodel</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <build>

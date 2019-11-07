@@ -1,0 +1,3 @@
+module coursebookdb {
+    requires coursebookmodel;
+}
