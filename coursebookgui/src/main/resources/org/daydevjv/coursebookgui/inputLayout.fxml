@@ -4,11 +4,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="149.0" prefWidth="295.0" spacing="20.0"
-      xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.daydevjv.coursebookgui.InputLayoutController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-    <Label text="Input View"/>
-</VBox>
+<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.daydevjv.coursebookgui.InputLayoutController">
+    <top>
+        <HBox prefHeight="0.0" prefWidth="200.0">
+            <ChoiceBox fx:id="choiceDisk" prefWidth="150.0"/>
+            <Label fx:id="lblSelectedDisk" text="Selected disk:">
+                <HBox.margin>
+                    <Insets left="20.0" right="20.0" top="5.0"/>
+                </HBox.margin>
+            </Label>
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </BorderPane.margin>
+        </HBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" prefHeight="149.0" prefWidth="295.0" spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            <Label text="Input View"/>
+        </VBox>
+    </center>
+</BorderPane>

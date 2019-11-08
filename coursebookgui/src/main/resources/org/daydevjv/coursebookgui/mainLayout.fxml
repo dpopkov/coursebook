@@ -6,16 +6,6 @@
 
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.daydevjv.coursebookgui.MainLayoutController">
-    <top>
-        <HBox prefHeight="0.0" prefWidth="200.0">
-            <ChoiceBox fx:id="choiceDisk" prefWidth="150.0"/>
-            <Label fx:id="lblSelectedDisk" text="Selected disk:">
-                <HBox.margin>
-                    <Insets left="20.0" right="20.0" top="5.0"/>
-                </HBox.margin>
-            </Label>
-        </HBox>
-    </top>
     <center>
         <TabPane fx:id="centerTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"
                  BorderPane.alignment="CENTER"/>
