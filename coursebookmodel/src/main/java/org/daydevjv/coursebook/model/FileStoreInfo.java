@@ -1,21 +1,26 @@
 package org.daydevjv.coursebook.model;
 
-import java.io.IOException;
 import java.nio.file.FileStore;
 import java.util.Objects;
 
 public class FileStoreInfo {
     private Integer id;
+    /** Name of files store depends on specific OS (e.g. /dev/sda2 on linux) */
     private final String name;
-    private final Integer volumeSerialNumber;
     private final FileStore fileStore;
-    private long totalSize;
 
-    public FileStoreInfo(String name, Integer volumeSerialNumber, FileStore fileStore) throws IOException {
+    private String diskModel;
+    private String diskSerial;
+    private String partitionUuid;
+    private long size;
+
+    public FileStoreInfo(String name, FileStore fileStore) {
         this.name = name;
-        this.volumeSerialNumber = volumeSerialNumber;
         this.fileStore = fileStore;
-        totalSize = fileStore.getTotalSpace();
+    }
+
+    public String getDescription() {
+        return name + " Size:" + (size / (1024*1024*1024)) + "Gb" + " at Disk:" + diskModel;
     }
 
     public String getName() {
@@ -30,40 +35,72 @@ public class FileStoreInfo {
         this.id = id;
     }
 
-    public Integer getVolumeSerialNumber() {
-        return volumeSerialNumber;
-    }
-
     public FileStore getFileStore() {
         return fileStore;
     }
 
-    public long getTotalSize() {
-        return totalSize;
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    public String getDiskModel() {
+        return diskModel;
+    }
+
+    public void setDiskModel(String diskModel) {
+        this.diskModel = diskModel;
+    }
+
+    public String getDiskSerial() {
+        return diskSerial;
+    }
+
+    public void setDiskSerial(String diskSerial) {
+        this.diskSerial = diskSerial;
+    }
+
+    public String getPartitionUuid() {
+        return partitionUuid;
+    }
+
+    public void setPartitionUuid(String partitionUuid) {
+        this.partitionUuid = partitionUuid;
     }
 
     @Override
     public String toString() {
-        return "FileStoreInfo{id=" + id + ", name='" + name + "', volumeSerialNumber=" + volumeSerialNumber
-                + ", totalSize=" + totalSize + '}';
+        return "FileStoreInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", diskModel='" + diskModel + '\'' +
+                ", diskSerial='" + diskSerial + '\'' +
+                ", partitionUuid='" + partitionUuid + '\'' +
+                ", size=" + size +
+                ", fileStore=" + fileStore +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         FileStoreInfo that = (FileStoreInfo) o;
-        return totalSize == that.totalSize && Objects.equals(id, that.id) && Objects.equals(name, that.name)
-                && Objects.equals(volumeSerialNumber, that.volumeSerialNumber);
+        return size == that.size &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(fileStore, that.fileStore) &&
+                Objects.equals(diskModel, that.diskModel) &&
+                Objects.equals(diskSerial, that.diskSerial) &&
+                Objects.equals(partitionUuid, that.partitionUuid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, volumeSerialNumber, totalSize);
+        return Objects.hash(id, name, fileStore, diskModel, diskSerial, partitionUuid, size);
     }
 }
 

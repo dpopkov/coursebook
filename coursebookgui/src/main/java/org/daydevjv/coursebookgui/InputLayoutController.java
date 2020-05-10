@@ -24,7 +24,7 @@ public class InputLayoutController {
         choiceDisk.setConverter(new StringConverter<>() {
             @Override
             public String toString(FileStoreInfo fsInfo) {
-                return fsInfo.getName();
+                return fsInfo.getDescription();
             }
 
             @Override
